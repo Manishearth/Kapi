@@ -1,6 +1,20 @@
 ﻿function addMathRegion() {
-    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta'><span>.</span></span>")
-
+    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>.</span></span>")
+    var ediv = document.getElementById('editdiv');
+    
+    ediv.contenteditable = false
+    var cspan = document.getElementById('currspan');
+    
+    cspan.contenteditable = true
+    cspan.onkeypress = function (e) {
+        if (e.which == 13) {
+            ediv.contenteditable = true
+            delete cspan.onkeypress
+            cspan.contenteditable = false
+            cspan.codetext = cspan.innerHTML
+            cspan.innerHTML="fart"
+        }
+    }
 }
 function pasteHtmlAtCaret(html) {
     var sel, range;
