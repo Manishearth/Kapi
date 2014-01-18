@@ -64,7 +64,7 @@
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
     <Content Include="js\MathToTeX.js" />
-    <Content Include="sampleData.js" />
+    
     <None Include="Kapi_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
