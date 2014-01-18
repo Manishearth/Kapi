@@ -19,7 +19,7 @@ function addMathRegion() {
         
         s.addRange(r);
     }
-    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>&nbsp;&nbsp;</span></span>")
+    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:#EEE' id=currspan><span>&nbsp;&nbsp;</span></span>")
 
     
     ediv.contentEditable = false
@@ -71,7 +71,7 @@ function mkPressHandler(cspan){
             cspan.appendChild(dspan)
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, cspan])
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
-            cspan.style.backgroundColor = "#EEEEEE"
+            cspan.style.backgroundColor = "#FFF"
             cspan.ondblclick = backToTextClo(cspan);
             if(e.preventDefault){
             e.preventDefault()
