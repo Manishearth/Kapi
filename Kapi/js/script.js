@@ -4,7 +4,7 @@
     
     ediv.contentEditable = false
     var cspan = document.getElementById('currspan');
-    
+    cspan.id=""
     cspan.contentEditable = true
     cspan.onkeypress = function (e) {
         if (e.which == 13) {
@@ -12,12 +12,23 @@
             delete cspan.onkeypress
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
-            cspan.innerHTML = "fart"
+            cspan.innerHTML = "$" + TypedMath.wholeShebang(cspan.innerHTML) + "$";
             e.preventDefault()
             e.stopPropagation()
+            var nrange = window.getSelection().getRangeAt(0).cloneRange()
+            nrange.deleteContents()
+            nrange.setStartAfter(cspan);
+            nrange.collapse(true);
+
+            window.getSelection().removeAllRanges()
+            window.getSelection().addRange(nrange)
             return false;
         }
     }
+}
+
+function backToText() {
+
 }
 function pasteHtmlAtCaret(html) {
     var sel, range;
