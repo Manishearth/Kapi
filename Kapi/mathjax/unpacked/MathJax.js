@@ -2885,7 +2885,7 @@ MathJax.Hub.Startup = {
   var BROWSERS = {
     isMac:       (navigator.platform.substr(0,3) === "Mac"),
     isPC:        (navigator.platform.substr(0,3) === "Win"),
-    isMSIE:      (window.ActiveXObject != null && window.clipboardData != null),
+    isMSIE:      (window.ActiveXObject != null),
     isFirefox:   (navigator.userAgent.match(/Gecko/) != null &&
                   navigator.userAgent.match(/KHTML/) == null),
     isSafari:    (navigator.userAgent.match(/ (Apple)?WebKit\//) != null &&

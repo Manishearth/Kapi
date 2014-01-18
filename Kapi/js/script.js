@@ -13,6 +13,7 @@
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
             cspan.innerHTML = "$" + TypedMath.wholeShebang(cspan.innerHTML) + "$";
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub,cspan])
             cspan.style.backgroundColor="#EEEEEE"
             e.preventDefault()
             e.stopPropagation()
