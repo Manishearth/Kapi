@@ -13,6 +13,7 @@
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
             cspan.innerHTML = "$" + TypedMath.wholeShebang(cspan.innerHTML) + "$";
+            cspan.style.backgroundColor="#EEEEEE"
             e.preventDefault()
             e.stopPropagation()
             var nrange = window.getSelection().getRangeAt(0).cloneRange()
