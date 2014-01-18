@@ -1,4 +1,9 @@
 ﻿function addMathRegion() {
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [["$", "$"], ["\\(", "\\)"]]
+        }
+    });
     pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>.</span></span>")
     var ediv = document.getElementById('editdiv');
     
@@ -12,7 +17,7 @@
             delete cspan.onkeypress
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
-            cspan.innerHTML = "\\(" + TypedMath.wholeShebang(cspan.innerHTML) + "\\)";
+            cspan.innerHTML = "$" + TypedMath.wholeShebang(cspan.innerHTML) + "$";
             document.getElementById('previewdiv').innerHTML=cspan.innerHTML
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, cspan])
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
@@ -29,7 +34,8 @@
             return false;
          }
          
-         document.getElementById('previewdiv').innerHTML = "\\(" + TypedMath.wholeShebang(cspan.innerHTML) +  "\\)";
+         document.getElementById('previewdiv').innerHTML = "$" + TypedMath.wholeShebang(cspan.innerHTML) + "$";
+         MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
 
     }
 }
