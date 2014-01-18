@@ -15,10 +15,10 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <m2:VisualElements DisplayName="Kapi" Description="Kapi" ForegroundText="light" BackgroundColor="#000000" Square150x150Logo="images\Logo.png" Square30x30Logo="images\SmallLogo.png" ToastCapable="false">
+      <m2:VisualElements DisplayName="Kapi" Description="Kapi" ForegroundText="light" BackgroundColor="#1a1a1a" Square150x150Logo="images\Logo.png" Square30x30Logo="images\SmallLogo.png" ToastCapable="false">
         <m2:DefaultTile ShortName="Kapi">
         </m2:DefaultTile>
-        <m2:SplashScreen Image="images\splashscreen.png" />
+        <m2:SplashScreen Image="images\splashscreen.png" BackgroundColor="#1a1a1a" />
         <m2:InitialRotationPreference>
           <m2:Rotation Preference="landscape" />
         </m2:InitialRotationPreference>
