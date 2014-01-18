@@ -11,14 +11,17 @@
     var cspan = document.getElementById('currspan');
     cspan.id=""
     cspan.contentEditable = true
+    cspan.onchange=updpreview
     cspan.onkeypress = function (e) {
          if (e.which == 13) {
             ediv.contentEditable = true
             delete cspan.onkeypress
+            delete cspan.onchange
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
-            cspan.innerHTML = "\\(" + TypedMath.wholeShebang(cspan.innerHTML) + "\\)";
-            document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.innerHTML) + "\\]";
+
+            document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.textContent) + "\\]";
+            cspan.innerHTML = "\\(" + TypedMath.wholeShebang(cspan.textContent) + "\\)";
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, cspan])
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
             cspan.style.backgroundColor="#EEEEEE"
@@ -34,12 +37,15 @@
             return false;
          }
          
-         document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.innerHTML) + "\\]";
-         MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
+
 
     }
 }
+function updPreview() {
+    document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.textContent) + "\\]";
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
 
+}
 function backToText() {
 
 }
