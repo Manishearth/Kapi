@@ -1,15 +1,22 @@
-﻿function addMathRegion() {
+﻿window.mathmode = false;
+function addMathRegion() {
+
     MathJax.Hub.Config({
         tex2jax: {
             inlineMath: [["$", "$"], ["\\(", "\\)"]]
         }
     });
-    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>&nbsp;&nbsp;</span></span>")
+
     var ediv = document.getElementById('editdiv');
+    if (window.mathmode) { ediv.ondblclick = false; mkPressHandler(document.getElementById('currspan'))("blah"); return;}
+    window.mathmode = true;
+    mathiconupd();
+    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>&nbsp;&nbsp;</span></span>")
+
     
     ediv.contentEditable = false
     var cspan = document.getElementById('currspan');
-    cspan.id=""
+    
     cspan.contentEditable = true
     cspan.onkeyup=updPreview(cspan)
     cspan.onkeypress = mkPressHandler(cspan)
@@ -24,12 +31,23 @@ function updPreview(spn) {
     }
 
 }
+function mathiconupd() {
+    if (window.mathmode) {
+        document.getElementById("mathicon").className = "fa fa-thumbs-up fa-3x"
+        document.getElementById("mathtext").innerHTML="Done!"
+    } else {
+        document.getElementById("mathicon").className = "fa fa-superscript fa-3x"
+        document.getElementById("mathtext").innerHTML = "Add math"
+
+    }
+}
 function mkPressHandler(cspan){
     return function (e) {
         if (e.which == 13||e=="blah") {
             var ediv = document.getElementById('editdiv');
             ediv.contentEditable = true
-            cspan.onkeypress =false
+            cspan.onkeypress = false
+            cspan.id=""
             cspan.onkeyup =false
             cspan.ondblclick =false
             ediv.ondblclick = false
@@ -58,6 +76,8 @@ function mkPressHandler(cspan){
 
             window.getSelection().removeAllRanges()
             window.getSelection().addRange(nrange)
+            window.mathmode = false;
+            mathiconupd()
             return false;
         }
     }
@@ -69,7 +89,8 @@ function backToTextClo(cspan) {
         addTxt(cspan.childNodes[0], this.codetext)
         cspan.style.backgroundColor = "magenta"
         var ediv = document.getElementById('editdiv');
-    
+        window.mathmode = true;
+        mathiconupd()
         ediv.contentEditable = false
         cspan.contentEditable = true
         cspan.onkeyup=updPreview(cspan)
@@ -132,3 +153,5 @@ function pasteHtmlAtCaret(html) {
         document.selection.createRange().pasteHTML(html);
     }
 }
+
+

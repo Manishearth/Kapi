@@ -28,7 +28,7 @@
     <table border="0" height="100%" width="100%">
         <tr height="100%" width="100%">
             <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -301px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -271px; left: 24px;">Typesetting Preview</h2>
-            	<div data-win-control="WinJS.UI.AppBar">
+            	<div data-win-control="WinJS.UI.AppBar" data-win-design-hidden="true">
                     <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'page', id:'', label:'New', onclick:null, section:'global', type:'button'}"></button>
             		<button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'folder', id:'', label:'Open', onclick:null, section:'global', type:'button'}"></button>
 					<button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'save', id:'', label:'Save', onclick:null, section:'global', type:'button'}"></button>
@@ -45,9 +45,9 @@
             		</div>
             	</div>
             	<div class="win-textarea" id="previewdiv" style="position:absolute; height:18.22%; width:25.7%; background-color:white; top: 155px; left: 17px;"></div>
-            	<button type="button" id="addmathbutton" style="position:absolute; top: 391.28px; bottom: 380px; left: 186px; right: 1211px; width: 70px; height: 70px;" onclick="addMathRegion()"><center><i class="fa fa-superscript fa-3x"></i><br> Add math</center></button>
+            	<button type="button" style="position:absolute; top: 391.28px; bottom: 380px; left: 186px; right: 1211px; width: 70px; height: 70px;" onclick="addMathRegion()" accesskey=m><center><i class="fa fa-superscript fa-3x" id=mathicon></i><br><span id="mathtext">Add math</span></center></button>
             	<button type="button" style="position:relative; top: -6px; left: 295.06px; width: 70px; height: 70px;">
-            		<center><i class="fa fa-pencil-square-o fa-3x"></i> Canvas</center>
+                <center><i class="fa fa-pencil-square-o fa-3x"></i> Canvas</center>
             	</button>
             </td>
             <td width="70%" style="background-color:white;"><h2 style="color:black; position:relative; top: -339.28px; left: 24px;">Notebook</h2>
