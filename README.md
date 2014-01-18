@@ -53,7 +53,7 @@ Notice that the cursor is now inside a pink box - that tells you it’s going to
 ----
 ###Adding a canvas:
 
-1.Kapi lets you add your own freehand scribbles into your notes with the <b>Canvas</b> option. So you can quickly sketch something to add to your existing notes.
+1. Kapi lets you add your own freehand scribbles into your notes with the <b>Canvas</b> option. So you can quickly sketch something to add to your existing notes.
 
 2. To add a canvas, click the <b>Canvas</b> button on the left screen.
 
