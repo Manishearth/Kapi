@@ -4,7 +4,7 @@
             inlineMath: [["$", "$"], ["\\(", "\\)"]]
         }
     });
-    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>.</span></span>")
+    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>&nbsp;&nbsp;</span></span>")
     var ediv = document.getElementById('editdiv');
     
     ediv.contentEditable = false
@@ -13,6 +13,8 @@
     cspan.contentEditable = true
     cspan.onkeyup=updPreview(cspan)
     cspan.onkeypress = mkPressHandler(cspan)
+    ediv.ondblclick = function () { ediv.ondblclick=false;mkPressHandler(cspan)("blah") }
+    cspan.ondblclick = function (e) { e.stopPropagation(); }
     
 }
 function updPreview(spn) {
@@ -24,11 +26,14 @@ function updPreview(spn) {
 }
 function mkPressHandler(cspan){
     return function (e) {
-        if (e.which == 13) {
+        if (e.which == 13||e=="blah") {
             var ediv = document.getElementById('editdiv');
             ediv.contentEditable = true
-            delete cspan.onkeypress
-            delete cspan.onkeyup
+            cspan.onkeypress =false
+            cspan.onkeyup =false
+            cspan.ondblclick =false
+            ediv.ondblclick = false
+            ediv.ondblclick = false;
             cspan.contentEditable = true
             cspan.codetext = cspan.textContent
 
@@ -42,10 +47,12 @@ function mkPressHandler(cspan){
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
             cspan.style.backgroundColor = "#EEEEEE"
             cspan.ondblclick = backToTextClo(cspan);
+            if(e.preventDefault){
             e.preventDefault()
             e.stopPropagation()
+             }
             var nrange = window.getSelection().getRangeAt(0).cloneRange()
-            nrange.deleteContents()
+           // nrange.deleteContents()
             nrange.setStartAfter(cspan);
             nrange.collapse(true);
 
@@ -67,13 +74,17 @@ function backToTextClo(cspan) {
         cspan.contentEditable = true
         cspan.onkeyup=updPreview(cspan)
         cspan.onkeypress = mkPressHandler(cspan)
+        ediv.ondblclick = function () { ediv.ondblclick=false; mkPressHandler(cspan)("blah") }
+        cspan.ondblclick = function (e) { e.stopPropagation(); }
         var nrange = window.getSelection().getRangeAt(0).cloneRange()
-        nrange.setStartBefore(cspan.childNodes[0]);
-        nrange.collapse(true);
+        nrange.selectNode(cspan.childNodes[0]);
+       // nrange.setEndAfter(cspan.childNodes[0]);
+       // nrange.collapse(true);
         window.getSelection().removeAllRanges()
         window.getSelection().addRange(nrange)
         e.stopPropagation()
         e.preventDefault()
+        cspan.focus()
         return false;
     }
 }
@@ -109,8 +120,9 @@ function pasteHtmlAtCaret(html) {
             if (lastNode) {
                 range = range.cloneRange();
                 range.setStartBefore(lastNode.childNodes[0]);
-                range.setEndAfter(lastNode.childNodes[0]);
-
+               range.setEndAfter(lastNode.childNodes[0]);
+                console.log(range.startOffset,range.endOffset)
+                
                 sel.removeAllRanges();
                 sel.addRange(range);
             }
