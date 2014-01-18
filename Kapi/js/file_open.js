@@ -19,7 +19,7 @@
     openPicker.pickSingleFileAsync().then(function (file) {
         if (file) {
             // Application now has read/write access to the picked file
-            window.file = file;
+            Windows.Storage.FileIO.readTextAsync(file).then(function (t) { document.getElementById('editdiv').innerHTML=t })
             WinJS.log && WinJS.log("Picked file: " + file.name, "sample", "status");
         } else {
             // The picker was dismissed with no selected file
