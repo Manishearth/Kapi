@@ -4,20 +4,38 @@
     
     ediv.contentEditable = false
     var cspan = document.getElementById('currspan');
-    
+    cspan.id=""
     cspan.contentEditable = true
     cspan.onkeypress = function (e) {
-        if (e.which == 13) {
+         if (e.which == 13) {
             ediv.contentEditable = true
             delete cspan.onkeypress
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
-            cspan.innerHTML = "fart"
+            cspan.innerHTML = "\\(" + TypedMath.wholeShebang(cspan.innerHTML) + "\\)";
+            document.getElementById('previewdiv').innerHTML=cspan.innerHTML
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, cspan])
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
+            cspan.style.backgroundColor="#EEEEEE"
             e.preventDefault()
             e.stopPropagation()
+            var nrange = window.getSelection().getRangeAt(0).cloneRange()
+            nrange.deleteContents()
+            nrange.setStartAfter(cspan);
+            nrange.collapse(true);
+
+            window.getSelection().removeAllRanges()
+            window.getSelection().addRange(nrange)
             return false;
-        }
+         }
+         
+         document.getElementById('previewdiv').innerHTML = "\\(" + TypedMath.wholeShebang(cspan.innerHTML) +  "\\)";
+
     }
+}
+
+function backToText() {
+
 }
 function pasteHtmlAtCaret(html) {
     var sel, range;
