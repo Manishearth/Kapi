@@ -1,4 +1,9 @@
 ﻿function addMathRegion() {
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [["$", "$"], ["\\(", "\\)"]]
+        }
+    });
     pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>.</span></span>")
     var ediv = document.getElementById('editdiv');
     
@@ -6,14 +11,17 @@
     var cspan = document.getElementById('currspan');
     cspan.id=""
     cspan.contentEditable = true
+    cspan.onkeyup=updPreview(cspan)
     cspan.onkeypress = function (e) {
          if (e.which == 13) {
             ediv.contentEditable = true
             delete cspan.onkeypress
+            delete cspan.onkeyup
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
-            cspan.innerHTML = "\\(" + TypedMath.wholeShebang(cspan.innerHTML) + "\\)";
-            document.getElementById('previewdiv').innerHTML=cspan.innerHTML
+
+            document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.textContent) + "\\]";
+            cspan.innerHTML = "\\(" + TypedMath.wholeShebang(cspan.textContent) + "\\)";
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, cspan])
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
             cspan.style.backgroundColor="#EEEEEE"
@@ -29,11 +37,17 @@
             return false;
          }
          
-         document.getElementById('previewdiv').innerHTML = "\\(" + TypedMath.wholeShebang(cspan.innerHTML) +  "\\)";
+
 
     }
 }
+function updPreview(spn) {
+    return function () {
+        document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(spn.textContent) + "\\]";
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
+    }
 
+}
 function backToText() {
 
 }

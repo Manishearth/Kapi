@@ -16,15 +16,7 @@
     <script src="/js/MathToTeX.js"></script>
     <script src="/mathjax/unpacked/MathJax.js?config=default">
     </script>
-    <script>
 
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [["$", "$"], ["\\(", "\\)"]]
-            }
-        });
-
-    </script>
  <!-- <script src="sampleData.js" type="text/javascript"></script>	-->  
 </head>
 <body style="background-color:#353535;">
@@ -47,7 +39,7 @@
             		</div>
             	</div>
             	<div class="win-textarea" id="previewdiv" style="position:absolute; height:18.22%; width:25.7%; background-color:white; top: 155px; left: 17px;"></div>
-            	<button type="button" style="position:absolute; top: 335px; bottom: 380px; left: 17px; right: 1211px;">But-fucking-ton</button>
+            	<button type="button" style="position:absolute; top: 335px; bottom: 380px; left: 17px; right: 1211px;" onclick="addMathRegion()">Add math</button>
             </td>
             <td width="70%" style="background-color:white;"><h2 style="color:black; position:relative; top: -355.28px; left: 24px;">Notebook</h2>
             	<div class="win-textarea" id=editdiv spellcheck="false" style="position: absolute; height: 81.71%; font-size: 20px; padding-left: 10px; top: 59px; left: 425px; width: 65.67%; border-bottom: 1px solid black; border-top: 1px solid black;" contenteditable="true">
