@@ -11,8 +11,13 @@ function addMathRegion() {
     if (window.mathmode) { ediv.ondblclick = false; mkPressHandler(document.getElementById('currspan'))("blah"); return;}
     window.mathmode = true;
     mathiconupd();
-    if(window.getSelection().rangeCount<=0){
-        return;
+    if (window.getSelection().rangeCount <= 0) {
+        var r = document.createRange();
+        var s = document.getSelection();
+        r.selectNodeContents(document.getElementById("editdiv"));
+        r.collapse(true);
+        
+        s.addRange(r);
     }
     pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>&nbsp;&nbsp;</span></span>")
 
