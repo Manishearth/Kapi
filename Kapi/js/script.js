@@ -17,8 +17,8 @@
             delete cspan.onkeypress
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
-            cspan.innerHTML = "$" + TypedMath.wholeShebang(cspan.innerHTML) + "$";
-            document.getElementById('previewdiv').innerHTML=cspan.innerHTML
+            cspan.innerHTML = "\\(" + TypedMath.wholeShebang(cspan.innerHTML) + "\\)";
+            document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.innerHTML) + "\\]";
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, cspan])
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
             cspan.style.backgroundColor="#EEEEEE"
@@ -34,7 +34,7 @@
             return false;
          }
          
-         document.getElementById('previewdiv').innerHTML = "$" + TypedMath.wholeShebang(cspan.innerHTML) + "$";
+         document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.innerHTML) + "\\]";
          MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
 
     }
