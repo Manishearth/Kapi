@@ -11,12 +11,12 @@
     var cspan = document.getElementById('currspan');
     cspan.id=""
     cspan.contentEditable = true
-    cspan.onchange=updpreview
+    cspan.onkeyup=updPreview(cspan)
     cspan.onkeypress = function (e) {
          if (e.which == 13) {
             ediv.contentEditable = true
             delete cspan.onkeypress
-            delete cspan.onchange
+            delete cspan.onkeyup
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
 
@@ -41,9 +41,11 @@
 
     }
 }
-function updPreview() {
-    document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.textContent) + "\\]";
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
+function updPreview(spn) {
+    return function () {
+        document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(spn.textContent) + "\\]";
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
+    }
 
 }
 function backToText() {
