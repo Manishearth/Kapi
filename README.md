@@ -1,6 +1,14 @@
 Kapi
 ====
 
-Math notebook for Windows 8 Metro
+###Developers
+* Aditya Nambiar
+* Manish Goregaokar
+* Mihir Kulkarni
+* Ranveer Aggarwal
 
-Made during Code.fun.do 2014 at IIT Bombay
+---
+
+###What is Kapi?
+
+Kapi is a math notebook for Windows 8/8.1 made in metro style. It was made during Code.fun.do 2014 at IIT Bombay.
