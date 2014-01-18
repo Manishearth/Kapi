@@ -12,23 +12,36 @@
     cspan.id=""
     cspan.contentEditable = true
     cspan.onkeyup=updPreview(cspan)
-    cspan.onkeypress = function (e) {
-         if (e.which == 13) {
+    cspan.onkeypress = mkPressHandler(cspan)
+    
+}
+function updPreview(spn) {
+    return function () {
+        addTxt(document.getElementById('previewdiv'),"\\[" + TypedMath.wholeShebang(spn.textContent) + "\\]");
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
+    }
+
+}
+function mkPressHandler(cspan){
+    return function (e) {
+        if (e.which == 13) {
+            var ediv = document.getElementById('editdiv');
             ediv.contentEditable = true
             delete cspan.onkeypress
             delete cspan.onkeyup
             cspan.contentEditable = true
-            cspan.codetext = cspan.innerHTML
+            cspan.codetext = cspan.textContent
 
             document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.textContent) + "\\]";
             dspan = document.createElement('span')
             dspan.contentEditable = false;
             addTxt(dspan, "\\(" + TypedMath.wholeShebang(cspan.textContent) + "\\)")
             cspan.innerHTML = ""
-             cspan.appendChild(dspan)
+            cspan.appendChild(dspan)
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, cspan])
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
-            cspan.style.backgroundColor="#EEEEEE"
+            cspan.style.backgroundColor = "#EEEEEE"
+            cspan.ondblclick = backToTextClo(cspan);
             e.preventDefault()
             e.stopPropagation()
             var nrange = window.getSelection().getRangeAt(0).cloneRange()
@@ -39,23 +52,31 @@
             window.getSelection().removeAllRanges()
             window.getSelection().addRange(nrange)
             return false;
-         }
-         
-
-
+        }
     }
 }
-function updPreview(spn) {
-    return function () {
-        addTxt(document.getElementById('previewdiv'),"\\[" + TypedMath.wholeShebang(spn.textContent) + "\\]");
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
+function backToTextClo(cspan) {
+
+    return function (e) {
+        cspan.innerHTML = "<span></span>"
+        addTxt(cspan.childNodes[0], this.codetext)
+        cspan.style.backgroundColor = "magenta"
+        var ediv = document.getElementById('editdiv');
+    
+        ediv.contentEditable = false
+        cspan.contentEditable = true
+        cspan.onkeyup=updPreview(cspan)
+        cspan.onkeypress = mkPressHandler(cspan)
+        var nrange = window.getSelection().getRangeAt(0).cloneRange()
+        nrange.setStartBefore(cspan.childNodes[0]);
+        nrange.collapse(true);
+        window.getSelection().removeAllRanges()
+        window.getSelection().addRange(nrange)
+        e.stopPropagation()
+        e.preventDefault()
+        return false;
     }
-
 }
-function backToText() {
-
-}
-
 function addTxt(el,txt) {
     
    // while (el.childNodes.length >= 1) {
