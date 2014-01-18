@@ -1,5 +1,5 @@
 ﻿function addMathRegion() {
-    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta'></span>")
+    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta'><span>.</span></span>")
 
 }
 function pasteHtmlAtCaret(html) {
@@ -25,9 +25,9 @@ function pasteHtmlAtCaret(html) {
             // Preserve the selection
             if (lastNode) {
                 range = range.cloneRange();
-                range.setStartAfter(lastNode);
-                range.moveStart(-1)
-                range.collapse(true);
+                range.setStartBefore(lastNode.childNodes[0]);
+                range.setEndAfter(lastNode.childNodes[0]);
+
                 sel.removeAllRanges();
                 sel.addRange(range);
             }
