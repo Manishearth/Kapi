@@ -26,6 +26,7 @@ function pasteHtmlAtCaret(html) {
             if (lastNode) {
                 range = range.cloneRange();
                 range.setStartAfter(lastNode);
+                range.moveStart(-1)
                 range.collapse(true);
                 sel.removeAllRanges();
                 sel.addRange(range);
