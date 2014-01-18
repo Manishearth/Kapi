@@ -49,9 +49,7 @@
     <RequiredPlatformVersion>8.1</RequiredPlatformVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    
     <PackageCertificateKeyFile>Kapi_TemporaryKey.pfx</PackageCertificateKeyFile>
-    
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -64,9 +62,8 @@
     <Content Include="images\storelogo.scale-100.png" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
-    
+    <Content Include="js\MathToTeX.js" />
     <None Include="Kapi_TemporaryKey.pfx" />
-    
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
