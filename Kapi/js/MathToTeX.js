@@ -252,7 +252,7 @@ TypedMath.prototype.compile = function () {
                             this.objects[i + 1].compiledText = this.objects[i + 1].compiledText.slice(1);
                         }
                         CT = CT.replace("%n%", this.objects[i + 1].compiledText);
-                            try(){
+                            try{
                             CT = CT.replace(/%([\{\}])%/ig, (this.objects[i + 1].compiledText.length == 1 && (!o.reqPN[3] || subscr.match(/\d/))) ? "" : "$1"); //remove braces for neatness wherever possible
                             }catch(e){}
                     }

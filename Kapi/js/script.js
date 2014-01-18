@@ -17,11 +17,15 @@
             ediv.contentEditable = true
             delete cspan.onkeypress
             delete cspan.onkeyup
-            cspan.contenteditable = false
+            cspan.contentEditable = true
             cspan.codetext = cspan.innerHTML
 
             document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.textContent) + "\\]";
-            cspan.innerHTML = "\\(" + TypedMath.wholeShebang(cspan.textContent) + "\\)";
+            dspan = document.createElement('span')
+            dspan.contentEditable = false;
+            addTxt(dspan, "\\(" + TypedMath.wholeShebang(cspan.textContent) + "\\)")
+            cspan.innerHTML = ""
+             cspan.appendChild(dspan)
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, cspan])
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
             cspan.style.backgroundColor="#EEEEEE"
@@ -43,13 +47,22 @@
 }
 function updPreview(spn) {
     return function () {
-        document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(spn.textContent) + "\\]";
+        addTxt(document.getElementById('previewdiv'),"\\[" + TypedMath.wholeShebang(spn.textContent) + "\\]");
         MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
     }
 
 }
 function backToText() {
 
+}
+
+function addTxt(el,txt) {
+    
+   // while (el.childNodes.length >= 1) {
+     //   el.removeChild(el.firstChild);
+    //}
+    el.innerHTML = "";
+    el.appendChild(el.ownerDocument.createTextNode(txt));
 }
 function pasteHtmlAtCaret(html) {
     var sel, range;
