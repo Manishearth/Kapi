@@ -2,17 +2,20 @@
     pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>.</span></span>")
     var ediv = document.getElementById('editdiv');
     
-    ediv.contenteditable = false
+    ediv.contentEditable = false
     var cspan = document.getElementById('currspan');
     
-    cspan.contenteditable = true
+    cspan.contentEditable = true
     cspan.onkeypress = function (e) {
         if (e.which == 13) {
-            ediv.contenteditable = true
+            ediv.contentEditable = true
             delete cspan.onkeypress
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
-            cspan.innerHTML="fart"
+            cspan.innerHTML = "fart"
+            e.preventDefault()
+            e.stopPropagation()
+            return false;
         }
     }
 }
