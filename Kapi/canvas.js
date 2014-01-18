@@ -1,4 +1,5 @@
 (function() {
+
 	window.drawMode="pen";
 	window.penDown=false;
 	var canvas = document.querySelector('#paint');
@@ -27,17 +28,32 @@
 	
 	
 	canvas.addEventListener('mousemove', function(e) {
+	
 		if(window.penDown && window.drawMode=="pen"){
 		mouse.x = e.pageX - this.offsetLeft;
 		mouse.y = e.pageY - this.offsetTop;
 			ctx.lineTo(mouse.x, mouse.y);
 			ctx.stroke();
+			
 		}
 	}, false);
+	function updatePen(e){
+	if(window.drawMode!="pen"){
+				
+			var d = document.getElementById('point');
+           // d.style.position = "absolute";
+           d.style.left = e.pageX+"px";
+           d.style.top = e.pageY+"px";
+		
+	}
+	}
 	canvas.addEventListener('mousedown', function(e) {
 		window.penDown=true;
-		mouse.x = e.pageX - this.offsetLeft;
+		updatePen(e);
+				mouse.x = e.pageX - this.offsetLeft;
 			mouse.y = e.pageY - this.offsetTop;
+
+			
 		if(window.drawMode=="pen"){	
 				
 //				ctx.moveTo(mouse.x, mouse.y);
@@ -72,7 +88,7 @@
 			}
 			if(window.drawMode=="line"){
 
-			console.log([mouse.x,mouse.y])
+	
 			ctx.lineTo(mouse.x, mouse.y);
 			ctx.stroke();
 			}
@@ -87,18 +103,29 @@
 			}
 	}, false);
 	 
-	var onPaint = function() {
-		
-	};
-	 curr=pen;
+
 	
+
+    //onclicks
 	document.getElementById('line').onclick=function()
 	{ 
         window.drawMode="line";
 	 }
 	document.getElementById('rectangle').onclick=function(){window.penDown=false;window.drawMode="rect"}
 	document.getElementById('circle').onclick=function(){window.penDown=false;window.drawMode="circ"}
-	 
+	document.getElementById('getimage').onclick=function(){
+		var oCanvas = document.getElementById('paint');
+		var strDataURI = oCanvas.toDataURL(); 
+		//Canvas2Image.saveAsPNG(oCanvas);
+		var oImgPNG = Canvas2Image.saveAsPNG(oCanvas, true);
+		console.log(oImgPNG);
+		document.getElementById('yo').appendChild(oImgPNG);
+	}
+	 document.getElementById('downloadimage').onclick=function(){
+		 var oCanvas = document.getElementById('paint');
+		var strDataURI = oCanvas.toDataURL(); 
+		Canvas2Image.saveAsPNG(oCanvas);
+	 }
 	
 	
 }());
