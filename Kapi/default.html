@@ -15,6 +15,7 @@
     <script src="/js/default.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/file.js"></script>
+    <script src="/js/file_open.js"></script>
     <script src="/js/MathToTeX.js"></script>
     <script src="/mathjax/unpacked/MathJax.js?config=default">
     </script>
@@ -31,8 +32,8 @@
             <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -301px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -271px; left: 24px;">Typesetting Preview</h2>
             	<div data-win-control="WinJS.UI.AppBar" data-win-design-hidden="true">
                     <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'page', id:'', label:'New', onclick:null, section:'global', type:'button'}"></button>
-            		<button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'folder', id:'', label:'Open', onclick:null, section:'global', type:'button'}"></button>
-					<button onclick="saveButton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'save', id:'savefile', label:'Save', onclick:null, section:'global', type:'button'}"></button>
+                    <button onclick="openbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'folder', id:'openfile', label:'Open', onclick:null, section:'global', type:'button'}"></button>
+                    <button onclick="saveButton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'save', id:'savefile', label:'Save', onclick:null, section:'global', type:'button'}"></button>
             	</div>
             	<div class="sampleFlipViewItemTemplate" data-win-control="WinJS.Binding.Template">
             		<div>
