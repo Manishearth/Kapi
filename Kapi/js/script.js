@@ -7,13 +7,15 @@
     cspan.id=""
     cspan.contentEditable = true
     cspan.onkeypress = function (e) {
-        if (e.which == 13) {
+         if (e.which == 13) {
             ediv.contentEditable = true
             delete cspan.onkeypress
             cspan.contenteditable = false
             cspan.codetext = cspan.innerHTML
-            cspan.innerHTML = "$" + TypedMath.wholeShebang(cspan.innerHTML) + "$";
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub,cspan])
+            cspan.innerHTML = "\\(" + TypedMath.wholeShebang(cspan.innerHTML) + "\\)";
+            document.getElementById('previewdiv').innerHTML=cspan.innerHTML
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, cspan])
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
             cspan.style.backgroundColor="#EEEEEE"
             e.preventDefault()
             e.stopPropagation()
@@ -25,7 +27,10 @@
             window.getSelection().removeAllRanges()
             window.getSelection().addRange(nrange)
             return false;
-        }
+         }
+         
+         document.getElementById('previewdiv').innerHTML = "\\(" + TypedMath.wholeShebang(cspan.innerHTML) +  "\\)";
+
     }
 }
 
