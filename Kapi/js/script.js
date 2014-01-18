@@ -11,6 +11,9 @@ function addMathRegion() {
     if (window.mathmode) { ediv.ondblclick = false; mkPressHandler(document.getElementById('currspan'))("blah"); return;}
     window.mathmode = true;
     mathiconupd();
+    if(window.getSelection().rangeCount<=0){
+        return;
+    }
     pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:magenta' id=currspan><span>&nbsp;&nbsp;</span></span>")
 
     
@@ -146,6 +149,7 @@ function pasteHtmlAtCaret(html) {
                 
                 sel.removeAllRanges();
                 sel.addRange(range);
+                lastNode.childNodes[0].click()
             }
         }
     } else if (document.selection && document.selection.type != "Control") {
