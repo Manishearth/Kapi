@@ -16,9 +16,14 @@
     <script src="/js/script.js"></script>
     <script src="/js/file.js"></script>
     <script src="/js/file_open.js"></script>
+    <script src="/js/canvas.js"></script>
     <script src="/js/MathToTeX.js"></script>
     <script src="/mathjax/unpacked/MathJax.js?config=default">
     </script>
+
+    <!--Canvas-->
+    <script src="base64.js"></script>
+    <script src="canvas2image.js"></script>
 
     <!--Font Awesome!-->
     <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
@@ -29,7 +34,7 @@
 
     <table border="0" height="100%" width="100%">
         <tr height="100%" width="100%">
-            <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -301px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -271px; left: 24px;">Typesetting Preview</h2>
+            <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -284.53px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -271px; left: 24px;">Typesetting Preview</h2>
             	<div data-win-control="WinJS.UI.AppBar" data-win-design-hidden="true">
                     <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'page', id:'', label:'New', onclick:null, section:'global', type:'button'}"></button>
                     <button onclick="openbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'folder', id:'openfile', label:'Open', onclick:null, section:'global', type:'button'}"></button>
@@ -47,13 +52,21 @@
             		</div>  
             	</div>
             	<div class="win-textarea" id="previewdiv" style="position:absolute; height:18.22%; width:25.7%; background-color:white; top: 155px; left: 17px;"></div>
-            	<button type="button" style="position:relative; top: -47px; bottom: 380px; left: 185px; right: 1211px; width: 70px; height: 70px;" onclick="addMathRegion()" accesskey=m><center><i class="fa fa-superscript fa-3x" id=mathicon></i><br><span id="mathtext">Add math</span></center></button>
-            	<button type="button" style="position:relative; top: -47px; left: 200.75px; width: 70px; height: 70px;" onclick="initCanvas()">
-                <center><i class="fa fa-pencil-square-o fa-3x"></i> Canvas</center>
+				<table>
+					<tr>
+						<td>
+							<button type="button" style="position:relative; top: -47px; bottom: 380px; left: 185px; right: 1211px; width: 70px; height: 70px;" onclick="addMathRegion()" accesskey=m><center><i class="fa fa-superscript fa-3x" id=mathicon></i><br><span id="mathtext">Add math</span></center></button>
+						</td>
+						<td>
+						<button type="button" onclick="initCanvas()" accesskey="c" style="position:relative; top: -47px; left: 200.75px; width: 70px; height: 70px;" onclick="initCanvas()">	
+							<center><i class="fa fa-pencil-square-o fa-3x"></i> Canvas</center>
             	</button>
+						</td>
+					</tr>
+				</table>
             </td>
-            <td width="70%" style="background-color:white;" ><h2 id="nh2"  style="color:black; position:relative; top: 20px; left: 24px;">Notebook</h2>
-            	<div class="win-textarea" id=editdiv spellcheck="false" style="position: relative;  font-size: 20px; padding-left: 10px; top: 20px;  left: 20px; width: 94%; border-bottom: 1px solid black; border-top: 1px solid black;" contenteditable="true">
+            <td width="70%" style="background-color:white;" ><h2 id="nh2"  style="color:black; position:relative; top: -2.76px; left: 32px;">Notebook</h2>
+            	<div class="win-textarea" id=editdiv spellcheck="false" style="position: relative;  font-size: 20px; padding-left: 10px; top: 4px;  left: 20px; width: 92.95%; border-bottom: 1px solid black; border-top: 1px solid black; height: 585px;" contenteditable="true">
             		
             	</div>
 

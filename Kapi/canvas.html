@@ -34,6 +34,7 @@ Thickness
   <option value=8>8</option>
 </select>
 <br /><br />
+
 Color
 <select id="coloor">
   <option value="#002200"><font color="#002200"> Black</font></option>
@@ -53,15 +54,24 @@ Color
 <br /><br />
 
 <button id="erase"><img src="E:/Kapi/glyphicons_free/glyphicons/png/eraser_26.png"></button>
+<br /><br />
+<button id="getimage">Get Image</button>
+<br /><br />
+<button id="downloadimage">Download Image</button>
+<br /><br />
 </div>
 </div>
-<div id="sketch" style="width:1000px;">
+<div id="sketch" style="width:1000px; height:1000px;">
 
 <canvas id="paint">
+<script src="base64.js"></script>
+<script src="canvas2image.js"></script>
 <script type="text/javascript" src="canvas.js"></script>
+
 
 </canvas>
 </div>
-
+<div id ="point" style="z-index:2;position:absolute;">+</div>
+<div id="yo"></div>
 </body>
 </html>
