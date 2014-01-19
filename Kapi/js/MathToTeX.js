@@ -15,7 +15,7 @@
 * Use this when you just want the final LaTeX result and don't need to analyse the TypedMath object
 */
 TypedMath.wholeShebang = function (text) {
-    text=text.replace("int","\int")
+    text=text.replace(/[^\\]int/g,"\\int")
     var TM = new TypedMath(text, false);
     TM.compile();
     return TypedMath.finalSweep(TM.compiledText);
