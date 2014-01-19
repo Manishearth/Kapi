@@ -98,7 +98,10 @@
             nodes[i].setAttribute('data-codetext', onodes[i].codetext);
             nodes[i].innerHTML=""
         }
-        console.log(sandboxNode)
+        nodes = sandboxNode.getElementsByTagName('img')
+        for (i = 0; i < nodes.length; i++) {
+            nodes[i].setAttribute('data-src', nodes[i].src);
+        }
         return toStaticHTML(sandboxNode.innerHTML);
 
     }

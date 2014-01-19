@@ -43,11 +43,15 @@ function unserialize(text) {
         nodes[i].codetext=nodes[i].getAttribute('data-codetext')
         nodes[i].ondblclick=backToTextClo(nodes[i])
     }
+
     MathJax.Hub.Config({
         tex2jax: {
             inlineMath: [["$", "$"], ["\\(", "\\)"]]
         }
     });
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('editdiv')])
-    
+    nodes = document.getElementById('editdiv').getElementsByTagName('img')
+    for (i = 0; i < nodes.length; i++) {
+        nodes[i].src=nodes[i].getAttribute('data-src');
+    }
 }
