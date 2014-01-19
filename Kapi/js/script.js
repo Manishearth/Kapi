@@ -13,7 +13,7 @@ function addMathRegion() {
     var ediv = document.getElementById('editdiv');
     if (window.mathmode) { ediv.ondblclick = false; mkPressHandler(document.getElementById('currspan'))("blah"); return;}
     window.mathmode = true;
-    document.getElementgetElementById("mathtab").style.visibility="visible"
+    document.getElementById("mathtab").style.visibility="visible"
     mathiconupd();
     if (window.getSelection().rangeCount <= 0) {
         var r = document.createRange();
@@ -63,7 +63,7 @@ function mkPressHandler(cspan){
                 exitCanvas()
 
             }
-            document.getElementgetElementById("mathtab").style.visibility = "hidden"
+            document.getElementById("mathtab").style.visibility = "hidden"
             var ediv = document.getElementById('editdiv');
             ediv.contentEditable = true
             cspan.onkeypress = false
@@ -107,7 +107,7 @@ function backToTextClo(cspan) {
     return function (e) {
         
         cspan.innerHTML = "<input id=currinp>"
-        document.getElementgetElementById("mathtab").style.visibility = "visible"
+        document.getElementById("mathtab").style.visibility = "visible"
         cspan.inp=document.getElementById("currinp")
         cspan.inp.value = cspan.codetext
         cspan.inp.value.size = cspan.codetext.length+2
