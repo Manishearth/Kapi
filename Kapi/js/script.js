@@ -24,7 +24,8 @@ function addMathRegion() {
     
     ediv.contentEditable = false
     var cspan = document.getElementById('currspan');
-    
+  //  var inp = document.getElementById('currinp')
+    //currinp.onkeyup = function () { this.size = this.value.length + 2 }
     cspan.contentEditable = true
     cspan.onkeyup=updPreview(cspan)
     cspan.onkeypress = mkPressHandler(cspan)
