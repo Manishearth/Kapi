@@ -42,3 +42,13 @@
         //dosomeshit
 
     }
+
+    function exportbutton(){
+        html2canvas(document.getElementById('editdiv'), {
+            onrendered: function (canvas) {
+               
+                Canvas2Image.saveAsPNG(canvas);
+            }
+        });
+
+    }
