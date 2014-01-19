@@ -19,7 +19,7 @@
     openPicker.pickSingleFileAsync().then(function (file) {
         if (file) {
             // Application now has read/write access to the picked file
-            Windows.Storage.FileIO.readTextAsync(file).then(function (t) { document.getElementById('editdiv').innerHTML=t })
+            Windows.Storage.FileIO.readTextAsync(file).then(function (t) { unserialize(t) })
             WinJS.log && WinJS.log("Picked file: " + file.name, "sample", "status");
         } else {
             // The picker was dismissed with no selected file
@@ -27,4 +27,27 @@
         }
     });
 
+}
+
+function unserialize(text) {
+    document.getElementById("editdiv").innerHTML = toStaticHTML(text);
+    document.getElementById("editdiv").contentEditable=true
+    nodes = document.getElementById("editdiv").getElementsByClassName('mathspan')
+    for (i = 0; i < nodes.length; i++) {
+        
+        dspan = document.createElement('span')
+        dspan.contentEditable = false;
+        addTxt(dspan, "\\(" + TypedMath.wholeShebang(nodes[i].getAttribute('data-codetext')) + "\\)")
+        nodes[i].innerHTML = ""
+        nodes[i].appendChild(dspan)
+        nodes[i].codetext=nodes[i].getAttribute('data-codetext')
+        nodes[i].ondblclick=backToTextClo(nodes[i])
+    }
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [["$", "$"], ["\\(", "\\)"]]
+        }
+    });
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('editdiv')])
+    
 }

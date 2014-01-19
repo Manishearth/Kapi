@@ -14,13 +14,14 @@
         savePicker.fileTypeChoices.insert("Kapi file", [".kapi"]);
         // Default file name if the user does not type one in or select a file to replace
         savePicker.suggestedFileName = "Newnote.kapi";
-
+        
         savePicker.pickSaveFileAsync().then(function (file) {
             if (file) {
                 // Prevent updates to the remote version of the file until we finish making changes and call CompleteUpdatesAsync.
                 Windows.Storage.CachedFileManager.deferUpdates(file);
                 // write to file
-                Windows.Storage.FileIO.writeTextAsync(file, document.getElementById("editdiv").innerHTML).done(function () {
+                serText = serialize();
+                Windows.Storage.FileIO.writeTextAsync(file, serText).done(function () {
                     // Let Windows know that we're finished changing the file so the other app can update the remote version of the file.
                     // Completing updates may require Windows to ask for user input.
                     Windows.Storage.CachedFileManager.completeUpdatesAsync(file).done(function (updateStatus) {
@@ -86,5 +87,18 @@
                 });
             }
         });
+
+    }
+
+    function serialize() {
+        sandboxNode = document.getElementById("editdiv").cloneNode(true)
+        nodes = sandboxNode.getElementsByClassName('mathspan')
+        onodes = document.getElementById("editdiv").getElementsByClassName('mathspan')
+        for (i = 0; i < nodes.length; i++) {
+            nodes[i].setAttribute('data-codetext', onodes[i].codetext);
+            nodes[i].innerHTML=""
+        }
+        console.log(sandboxNode)
+        return toStaticHTML(sandboxNode.innerHTML);
 
     }
