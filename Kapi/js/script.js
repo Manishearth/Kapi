@@ -1,6 +1,9 @@
 ﻿window.mathmode = false;
 function addMathRegion() {
+    if (canvasmode) {
+        exitCanvas()
 
+    }
     MathJax.Hub.Config({
         tex2jax: {
             inlineMath: [["$", "$"], ["\\(", "\\)"]]
@@ -54,7 +57,11 @@ function mathiconupd() {
 }
 function mkPressHandler(cspan){
     return function (e) {
-        if (e.which == 13||e=="blah") {
+        if (e.which == 13 || e == "blah") {
+            if (canvasmode) {
+                exitCanvas()
+
+            }
             var ediv = document.getElementById('editdiv');
             ediv.contentEditable = true
             cspan.onkeypress = false

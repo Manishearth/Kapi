@@ -1,14 +1,49 @@
-﻿function initCanvas() {
-    pasteHtmlAtCaretUnselect("<div id='currcanvasdiv'><canvas id='paint' style='border:1px solid black;'></canvas></div>")
+﻿window.canvasmode=false
+function initCanvas() {
+    if (canvasmode) {
+        exitCanvas()
+        return;
+    }
+    if (mathmode) {
+
+        return
+    }
+    window.canvasmode = true
+
+    pasteHtmlAtCaretUnselect("<div id='currcanvasdiv' style='text-align:center'><canvas id='paint' style='border:1px solid black'></canvas></div>")
     ediv = document.getElementById("editdiv");
     document.getElementById('currcanvasdiv').contentEditable=false
     ediv.contentEditable = false;
     ediv.ondblclick = exitCanvas;
+    document.getElementById('currcanvasdiv').ondblclick = function (e) { e.stopPropagation(); e.preventDefault();return false}
     nambiCode()
 }
 
 function exitCanvas() {
+    ediv = document.getElementById("editdiv");
     ediv.contentEditable = true;
+    ediv.ondblclick = false
+
+    var oCanvas = document.getElementById('paint');
+    var strDataURI = oCanvas.toDataURL();
+    //Canvas2Image.saveAsPNG(oCanvas);
+    var oImgPNG = Canvas2Image.saveAsPNG(oCanvas, true);
+    oImgPNG.contentEditable=false
+    var ccd = document.getElementById('currcanvasdiv')
+    ccd.ondblclick=false
+    ccd.contentEditable=false
+    ccd.innerHTML=""
+    ccd.appendChild(oImgPNG);
+    ccd.id = ""
+    var nrange = window.getSelection().getRangeAt(0).cloneRange()
+    // nrange.deleteContents()
+    nrange=document.createRange()
+    nrange.setStartAfter(ccd);
+    nrange.collapse(true);
+
+    window.getSelection().removeAllRanges()
+    window.getSelection().addRange(nrange)
+    canvasmode=false
 }
 
 function nambiCode() {
@@ -134,13 +169,8 @@ function nambiCode() {
     document.getElementById('rectangle').onclick = function () { window.penDown = false; window.drawMode = "rect" }
     document.getElementById('circle').onclick = function () { window.penDown = false; window.drawMode = "circ" }
    /* document.getElementById('getimage').onclick = function () {
-        var oCanvas = document.getElementById('paint');
-        var strDataURI = oCanvas.toDataURL();
-        //Canvas2Image.saveAsPNG(oCanvas);
-        var oImgPNG = Canvas2Image.saveAsPNG(oCanvas, true);
-        console.log(oImgPNG);
-        document.getElementById('yo').appendChild(oImgPNG);
-    }
+
+    
     document.getElementById('downloadimage').onclick = function () {
         var oCanvas = document.getElementById('paint');
         var strDataURI = oCanvas.toDataURL();
