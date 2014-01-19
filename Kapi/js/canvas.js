@@ -31,7 +31,7 @@ function exitCanvas() {
     var strDataURI = oCanvas.toDataURL();
     //Canvas2Image.saveAsPNG(oCanvas);
     var oImgPNG = Canvas2Image.saveAsPNG(oCanvas, true);
-    oImgPNG.contentEditable=false
+    oImgPNG.contentEditable=true
     var ccd = document.getElementById('currcanvasdiv')
     ccd.ondblclick=false
     ccd.contentEditable=false

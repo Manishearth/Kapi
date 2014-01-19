@@ -124,6 +124,7 @@
     <Content Include="css\default.css" />
     <Content Include="js\file.js" />
     <Content Include="js\file_open.js" />
+    <Content Include="js\html2canvas.js" />
     <Content Include="js\MathToTeX.js" />
     <Content Include="js\script.js" />
     <Content Include="mathjax\.gitignore" />
