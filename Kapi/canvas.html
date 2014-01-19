@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" href="E:/Kapi/font-awesome/css/font-awesome.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style>
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+#sketch {
+	border: 5px solid black;
+	height: 100%;
+	position: relative;
+}
+
+#tmp_canvas {
+	position: absolute;
+	left: 0px; right: 0;
+	bottom: 0; top: 0;
+	cursor: crosshair;
+}
+</style>
+</head>
+<body>
+<div id="menu" style="position:absolute; left:1050px;">
+Thickness
+<select id="thickness">
+  <option value=2>2</option>
+  <option value=4>4</option>
+  <option value=6>6</option>
+  <option value=8>8</option>
+</select>
+<br /><br />
+Color
+<select id="coloor">
+  <option value="#002200"><font color="#002200"> Black</font></option>
+  <option value="#00CCFF"><font color="#00CCFF">Blue</font></option>
+  <option value="#CCFF00"><font color="#CCFF00">Yellow</font></option>
+  <option value="#33CC33"><font color="#33CC33">Green</font></option>
+  <option value="#CC3366"><font color="#CC3366">Red</font></option>
+</select>
+<br /><br />
+<button id="pen"><img src="E:/Kapi/glyphicons_free/glyphicons/png/glyphicons_030_pencil.png"></button>
+<br /><br />
+<button id="line"><img src="E:/Kapi/glyphicons_free/glyphicons/png/glyphicons_097_vector_path_line.png"></button>
+<br /><br />
+<button id="rectangle"><img src="E:/Kapi/glyphicons_free/glyphicons/png/glyphicons_094_vector_path_square.png"></button>
+<br /><br />
+<button id="circle"><img src="E:/Kapi/glyphicons_free/glyphicons/png/glyphicons_095_vector_path_circle.png"></button>
+<br /><br />
+
+<button id="erase"><img src="E:/Kapi/glyphicons_free/glyphicons/png/eraser_26.png"></button>
+</div>
+</div>
+<div id="sketch" style="width:1000px;">
+
+<canvas id="paint">
+<script type="text/javascript" src="canvas.js"></script>
+
+</canvas>
+</div>
+
+</body>
+</html>
