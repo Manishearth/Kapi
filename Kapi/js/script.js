@@ -19,13 +19,15 @@ function addMathRegion() {
         
         s.addRange(r);
     }
-    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:#EEE' id=currspan><span>&nbsp;&nbsp;</span><input id=currinp size=2 ></span>")
+    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:#FFF' class=mathspan id=currspan><input id=currinp size=2 ></span>")
 
     
     ediv.contentEditable = false
     var cspan = document.getElementById('currspan');
     var inp = document.getElementById('currinp')
-    currinp.onkeyup = function () { this.size = this.value.length + 2 }
+    cspan.inp=inp
+    inp.onkeyup = function () { this.size = this.value.length + 2 }
+    inp.focus()
     cspan.contentEditable = true
     cspan.onkeyup=updPreview(cspan)
     cspan.onkeypress = mkPressHandler(cspan)
@@ -35,7 +37,7 @@ function addMathRegion() {
 }
 function updPreview(spn) {
     return function () {
-        addTxt(document.getElementById('previewdiv'),"\\[" + TypedMath.wholeShebang(spn.textContent) + "\\]");
+        addTxt(document.getElementById('previewdiv'),"\\[" + TypedMath.wholeShebang(spn.inp.value) + "\\]");
         MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('previewdiv')])
     }
 
@@ -61,13 +63,13 @@ function mkPressHandler(cspan){
             cspan.ondblclick =false
             ediv.ondblclick = false
             ediv.ondblclick = false;
-            cspan.contentEditable = true
-            cspan.codetext = cspan.textContent
-
-            document.getElementById('previewdiv').innerHTML = "\\[" + TypedMath.wholeShebang(cspan.textContent) + "\\]";
+            //cspan.contentEditable = true
+            cspan.codetext = cspan.inp.value
+           
+            document.getElementById('previewdiv').innerHTML = "";
             dspan = document.createElement('span')
             dspan.contentEditable = false;
-            addTxt(dspan, "\\(" + TypedMath.wholeShebang(cspan.textContent) + "\\)")
+            addTxt(dspan, "\\(" + TypedMath.wholeShebang(cspan.inp.value) + "\\)")
             cspan.innerHTML = ""
             cspan.appendChild(dspan)
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, cspan])
@@ -94,9 +96,13 @@ function mkPressHandler(cspan){
 function backToTextClo(cspan) {
 
     return function (e) {
-        cspan.innerHTML = "<span></span>"
-        addTxt(cspan.childNodes[0], this.codetext)
-        cspan.style.backgroundColor = "magenta"
+        
+        cspan.innerHTML = "<input id=currinp>"
+        
+        cspan.inp=document.getElementById("currinp")
+        cspan.inp.value = cspan.codetext
+        cspan.inp.value.size = cspan.codetext.length+2
+       // cspan.style.backgroundColor = "#EEE"
         var ediv = document.getElementById('editdiv');
         window.mathmode = true;
         mathiconupd()
@@ -106,15 +112,10 @@ function backToTextClo(cspan) {
         cspan.onkeypress = mkPressHandler(cspan)
         ediv.ondblclick = function () { ediv.ondblclick=false; mkPressHandler(cspan)("blah") }
         cspan.ondblclick = function (e) { e.stopPropagation(); }
-        var nrange = window.getSelection().getRangeAt(0).cloneRange()
-        nrange.selectNode(cspan.childNodes[0]);
-       // nrange.setEndAfter(cspan.childNodes[0]);
-       // nrange.collapse(true);
-        window.getSelection().removeAllRanges()
-        window.getSelection().addRange(nrange)
+        cspan.inp.onkeyup = function () { this.size = this.value.length + 2 }
+        cspan.inp.focus()
         e.stopPropagation()
         e.preventDefault()
-        cspan.focus()
         return false;
     }
 }
@@ -146,17 +147,7 @@ function pasteHtmlAtCaret(html) {
             }
             range.insertNode(frag);
 
-            // Preserve the selection
-            if (lastNode) {
-                range = range.cloneRange();
-                range.setStartBefore(lastNode.childNodes[0]);
-               range.setEndAfter(lastNode.childNodes[0]);
-                console.log(range.startOffset,range.endOffset)
-                
-                sel.removeAllRanges();
-                sel.addRange(range);
-                lastNode.childNodes[0].click()
-            }
+
         }
     } else if (document.selection && document.selection.type != "Control") {
         // IE < 9

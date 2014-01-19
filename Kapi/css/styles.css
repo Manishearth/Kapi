@@ -1,2 +1,6 @@
-﻿body {
+﻿.mathspan {
+background-color:white;
+}
+.mathspan input {
+background-color:white;border:1px dashed black;padding:2px;margin:2px;
 }
