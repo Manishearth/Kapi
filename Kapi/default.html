@@ -35,10 +35,12 @@
     <table border="0" height="100%" width="100%">
         <tr height="100%" width="100%">
             <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -219.03px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -196px; left: 24px;">Typesetting Preview</h2>
-            	<div data-win-control="WinJS.UI.AppBar" data-win-design-hidden="true">
+            	<div data-win-control="WinJS.UI.AppBar">
                     <button onclick="newbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'page', id:'', label:'New', onclick:null, section:'global', type:'button'}"></buttononclick=newbutton())>
                     <button onclick="openbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'folder', id:'openfile', label:'Open', onclick:null, section:'global', type:'button'}"></button>
                     <button onclick="saveButton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'save', id:'savefile', label:'Save', onclick:null, section:'global', type:'button'}"></button>
+					<button onclick="exportbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'print', id:'export', label:'Export', onclick:null, section:'global', type:'button'}"></button>
+            		
             	</div>
             	<div class="sampleFlipViewItemTemplate" data-win-control="WinJS.Binding.Template">
             		<div>
