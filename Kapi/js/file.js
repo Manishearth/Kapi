@@ -40,11 +40,13 @@
     }
 
     function newbutton() {
+        //TODO tabbing
         document.getElementById('editdiv').innerHTML=""
 
     }
 
-    function exportbutton(){
+    function exportbutton() {
+        //TODO Export whole page, take snapshot.
         html2canvas(document.getElementById('editdiv'), {
             onrendered: function (canvas) {
                
