@@ -35,7 +35,7 @@
 
     <table border="0" height="100%" width="100%">
         <tr height="100%" width="100%">
-            <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -219.03px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -196px; left: 24px;">Typesetting Preview</h2>
+            <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -186.03px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -163px; left: 24px;">Typesetting Preview</h2>
             	<div data-win-control="WinJS.UI.AppBar">
                     <button onclick="newbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'page', id:'', label:'New', onclick:null, section:'global', type:'button'}"></buttononclick=newbutton())>
                     <button onclick="openbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'folder', id:'openfile', label:'Open', onclick:null, section:'global', type:'button'}"></button>
@@ -58,16 +58,35 @@
 				<table>
 					<tr>
 						<td>
-							<button type="button" style="position:relative; top: -1px; bottom: 380px; left: 185px; right: 1211px; width: 70px; height: 73px;" onclick="addMathRegion()" accesskey=m><center><i class="fa fa-superscript fa-3x" id=mathicon></i><br><span id="mathtext">Add math</span></center></button>
+							<button type="button" style="position:relative; top: 11px; bottom: 380px; left: 184px; right: 1211px; width: 70px; height: 73px;" onclick="addMathRegion()" accesskey=m><center><i class="fa fa-superscript fa-3x" id=mathicon></i><br><span id="mathtext">Add math</span></center></button>
 						</td>
 						<td>
-						<button type="button" onclick="initCanvas()" accesskey="c" style="position:relative; top: -1px; left: 202px; width: 70px; height: 75px;" onclick="initCanvas()">	
+						<button type="button" onclick="initCanvas()" accesskey="c" style="position:relative; top: 11px; left: 202px; width: 70px; height: 75px;" onclick="initCanvas()">	
 							<center><i class="fa fa-pencil-square-o fa-3x"></i> Canvas</center>
             	</button>
 						</td>
 					</tr>
 				</table>
-                <div id="canvtab" style="visibility:hidden">
+				<div id="mathtab" style="visibility:hidden;">
+                    <table>
+                        <tr>
+                            <td>
+                                <button type="button" id="pen" style="position:relative; left: 14px; top: 44px;">Paran</button>
+                            </td>
+                            <td>
+                                <button type="button" id="line" style="position:relative; left: 14px; top: 44px;">Sqrt</button>
+                            </td>
+                            <td>
+                                <button type="button" id="rectangle" style="position:relative; left: 14px; top: 44px;">Power</button>
+                            </td>
+                            <td>
+                                <button type="button" id="circle" style="position:relative; left: 14px; top: 44px;">Integral</button>
+                            </td>
+
+                        </tr>
+						</table>
+						</div>
+                <div id="canvtab" style="visibility:visible;">
                     <table>
                         <tr>
                             <td>
