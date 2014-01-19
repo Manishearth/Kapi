@@ -40,7 +40,7 @@
     }
 
     function newbutton() {
-        //dosomeshit
+        document.getElementById('editdiv').innerHTML=""
 
     }
 
