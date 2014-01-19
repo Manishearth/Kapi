@@ -1,5 +1,6 @@
 ﻿window.canvasmode=false
 function initCanvas() {
+    
     if (canvasmode) {
         exitCanvas()
         return;
@@ -9,7 +10,7 @@ function initCanvas() {
         return
     }
     window.canvasmode = true
-
+    document.getElementById("canvtab").style.visibility = "visible"
     pasteHtmlAtCaretUnselect("<div id='currcanvasdiv' style='text-align:center'><canvas id='paint' style='border:1px solid black'></canvas></div>")
     ediv = document.getElementById("editdiv");
     document.getElementById('currcanvasdiv').contentEditable=false
@@ -20,6 +21,7 @@ function initCanvas() {
 }
 
 function exitCanvas() {
+    document.getElementById("canvtab").style.visibility = "hidden"
     ediv = document.getElementById("editdiv");
     ediv.contentEditable = true;
     ediv.ondblclick = false
