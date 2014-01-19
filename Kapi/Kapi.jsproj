@@ -56,8 +56,10 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="base64.js" />
     <Content Include="canvas.html" />
     <Content Include="canvas.js" />
+    <Content Include="canvas2image.js" />
     <Content Include="css\font-awesome\css\font-awesome.css" />
     <Content Include="css\font-awesome\css\font-awesome.min.css" />
     <Content Include="css\font-awesome\fonts\fontawesome-webfont.eot" />

@@ -5,10 +5,10 @@
 	var canvas = document.querySelector('#paint');
 	var ctx = canvas.getContext('2d');
     var curr;
-	var sketch = document.querySelector('#sketch');
+    var sketch = document.querySelector('#currcanvasdiv');
 	var sketch_style = getComputedStyle(sketch);
-	canvas.width = parseInt(sketch_style.getPropertyValue('width'));
-	canvas.height = parseInt(sketch_style.getPropertyValue('height'));
+	//canvas.width = parseInt(sketch_style.getPropertyValue('width'));
+	//canvas.height = parseInt(sketch_style.getPropertyValue('height'));
 
 	var mouse = {x: 0, y: 0};
 	 
@@ -25,7 +25,7 @@
 	document.getElementById('erase').onclick=function(){canvas.width = parseInt(sketch_style.getPropertyValue('width'));
 	canvas.height = parseInt(sketch_style.getPropertyValue('height'));}
     document.getElementById('pen').onclick=function(){ window.drawMode="pen"}; 
-	
+	console.log(canvas)
 	
 	canvas.addEventListener('mousemove', function(e) {
 	
@@ -47,7 +47,8 @@
 		
 	}
 	}
-	canvas.addEventListener('mousedown', function(e) {
+	canvas.addEventListener('mousedown', function (e) {
+        console.log(10)
 		window.penDown=true;
 		updatePen(e);
 				mouse.x = e.pageX - this.offsetLeft;
