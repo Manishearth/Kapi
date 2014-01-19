@@ -38,9 +38,9 @@ function exitCanvas() {
     ccd.innerHTML=""
     ccd.appendChild(oImgPNG);
     ccd.id = ""
-    var nrange = window.getSelection().getRangeAt(0).cloneRange()
+    //var nrange = window.getSelection().getRangeAt(0).cloneRange()
     // nrange.deleteContents()
-    nrange=document.createRange()
+    var nrange=document.createRange()
     nrange.setStartAfter(ccd);
     nrange.collapse(true);
 

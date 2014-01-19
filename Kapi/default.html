@@ -35,7 +35,7 @@
 
     <table border="0" height="100%" width="100%">
         <tr height="100%" width="100%">
-            <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -186.03px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -163px; left: 24px;">Typesetting Preview</h2>
+            <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -186.03px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -163px; left: 24px;">Math Preview</h2>
             	<div data-win-control="WinJS.UI.AppBar">
                     <button onclick="newbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'page', id:'', label:'New', onclick:null, section:'global', type:'button'}"></buttononclick=newbutton())>
                     <button onclick="openbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'folder', id:'openfile', label:'Open', onclick:null, section:'global', type:'button'}"></button>
@@ -50,10 +50,12 @@
             	</div>
             	<div data-win-control="WinJS.UI.NavBar" data-win-design-hidden="true">
             		<div data-win-control="WinJS.UI.NavBarContainer">
+                        <!-- TODO tabbing-->
             			<div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{icon:WinJS.UI.AppBarIcon.page2, location:'/pages/home/home.html', label:'Note 1'}"></div>
             			<div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{icon:WinJS.UI.AppBarIcon.page2, location:'/pages/home/home.html', label:'Note 2'}"></div>
             		</div>  
             	</div>
+            <!--TODO align-->
             	<div class="win-textarea" id="previewdiv" style="position:absolute; height:18.25%; width:25.7%; background-color:white; top: 142px; left: 17px;"></div>
 				<table>
 					<tr>
@@ -71,16 +73,16 @@
                     <table>
                         <tr>
                             <td>
-                                <button type="button" id="pen" style="position:relative; left: 14px; top: 44px;">Paran</button>
+                                <button type="button" id="paren"  onclick="mathParen()" accesskey="p" style="position:relative; left: 14px; top: 44px;">Paren</button>
                             </td>
                             <td>
-                                <button type="button" id="line" style="position:relative; left: 14px; top: 44px;">Sqrt</button>
+                                <button type="button" id="sqrt" onclick="mathSqrt()" accesskey="q" style="position:relative; left: 14px; top: 44px;">Sqrt</button>
                             </td>
                             <td>
-                                <button type="button" id="rectangle" style="position:relative; left: 14px; top: 44px;">Power</button>
+                                <button type="button" id="pow" onclick="mathPow()"  accesskey="r" style="position:relative; left: 14px; top: 44px;">Power</button>
                             </td>
                             <td>
-                                <button type="button" id="circle" style="position:relative; left: 14px; top: 44px;">Integral</button>
+                                <button type="button" id="int" onclick="mathInt()" accesskey="i" style="position:relative; left: 14px; top: 44px;">Integral</button>
                             </td>
 
                         </tr>

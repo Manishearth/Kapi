@@ -13,6 +13,7 @@ function addMathRegion() {
     var ediv = document.getElementById('editdiv');
     if (window.mathmode) { ediv.ondblclick = false; mkPressHandler(document.getElementById('currspan'))("blah"); return;}
     window.mathmode = true;
+    document.getElementById("mathtab").style.visibility="visible"
     mathiconupd();
     if (window.getSelection().rangeCount <= 0) {
         var r = document.createRange();
@@ -62,6 +63,7 @@ function mkPressHandler(cspan){
                 exitCanvas()
 
             }
+            document.getElementById("mathtab").style.visibility = "hidden"
             var ediv = document.getElementById('editdiv');
             ediv.contentEditable = true
             cspan.onkeypress = false
@@ -105,7 +107,7 @@ function backToTextClo(cspan) {
     return function (e) {
         
         cspan.innerHTML = "<input id=currinp>"
-        
+        document.getElementById("mathtab").style.visibility = "visible"
         cspan.inp=document.getElementById("currinp")
         cspan.inp.value = cspan.codetext
         cspan.inp.value.size = cspan.codetext.length+2
@@ -201,5 +203,71 @@ function pasteHtmlAtCaretUnselect(html) {
                 lastNode.childNodes[0].click()
             }
         }
+
+}
+function mathParen() {
+    if (mathmode) {
+
+        insMath("(", ")", document.getElementById("currspan").inp)
+     //   document.getElementById("currspan").inp.size = document.getElementById("currspan").inp.value + 2
+    }
+}
+function mathPow() {
+    if (mathmode) {
+
+        insMath("^(", ")", document.getElementById("currspan").inp)
+      //  document.getElementById("currspan").inp.size = document.getElementById("currspan").inp.value + 2
+    }
+}
+function mathSqrt() {
+    if (mathmode) {
+
+        insMath("(sqrt(", "))", document.getElementById("currspan").inp)
+       // document.getElementById("currspan").inp.size = document.getElementById("currspan").inp.value+2
+    }
+}
+function mathInt() {
+    if (mathmode) {
+
+        insMath(" int ", "", document.getElementById("currspan").inp)
+        ///document.getElementById("currspan").inp.size = document.getElementById("currspan").inp.value + 2
+    }
+   
+}
+
+
+
+function insMath(left, right,node) {
+  
+
+
+        try {
+            //--- Wrap selected text or insert at curser.
+            var oldText = node.value || node.textContent;
+            var newText;
+            var iTargetStart = node.selectionStart;
+            var iTargetEnd = node.selectionEnd;
+
+            if (iTargetStart == iTargetEnd)
+                newText = left + right;
+            else
+                newText = left + oldText.slice(iTargetStart, iTargetEnd) + right;
+
+            //console.log (newText);
+            newText = oldText.slice(0, iTargetStart) + newText + oldText.slice(iTargetEnd);
+            node.value = newText;
+            //-- After using spelling corrector, this gets buggered, hence the multiple sets.
+            node.textContent = newText;
+            //-- Have to reset selection, since we repasted the text.
+            node.selectionStart = iTargetStart + left.length;
+            node.selectionEnd = iTargetEnd + left.length;
+            node.size=node.value.length+2
+            node.focus();
+            
+        } catch (e) {
+            console.warn("***Textarea does not exist");
+            console.log(e);
+        }
+        return false;
 
 }
