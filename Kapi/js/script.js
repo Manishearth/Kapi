@@ -19,12 +19,13 @@ function addMathRegion() {
         
         s.addRange(r);
     }
-    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:#EEE' id=currspan><span>&nbsp;&nbsp;</span></span>")
+    pasteHtmlAtCaret("<span style='padding:4px;margin:4px;background-color:#EEE' id=currspan><span>&nbsp;&nbsp;</span><input id=currinp size=2 ></span>")
 
     
     ediv.contentEditable = false
     var cspan = document.getElementById('currspan');
-    
+    var inp = document.getElementById('currinp')
+    currinp.onkeyup = function () { this.size = this.value.length + 2 }
     cspan.contentEditable = true
     cspan.onkeyup=updPreview(cspan)
     cspan.onkeypress = mkPressHandler(cspan)
