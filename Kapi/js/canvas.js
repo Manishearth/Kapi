@@ -21,6 +21,7 @@ function initCanvas() {
 }
 
 function exitCanvas() {
+    document.getElementById('erase').onclick=false
     document.getElementById("canvtab").style.visibility = "hidden"
     ediv = document.getElementById("editdiv");
     ediv.contentEditable = true;
@@ -53,6 +54,8 @@ function nambiCode() {
     window.drawMode = "pen";
     window.penDown = false;
     var canvas = document.querySelector('#paint');
+    canvas.height = "300"
+    canvas.width="300"
     var ctx = canvas.getContext('2d');
     var curr;
     var sketch = document.querySelector('#currcanvasdiv');
@@ -72,10 +75,9 @@ function nambiCode() {
     ctx.lineCap = 'round';
     ctx.strokeStyle = document.getElementById('coloor').value;
     document.getElementById('coloor').onchange = function () { ctx.strokeStyle = document.getElementById('coloor').value; }
-   /* document.getElementById('erase').onclick = function () {
-        canvas.width = parseInt(sketch_style.getPropertyValue('width'));
-        canvas.height = parseInt(sketch_style.getPropertyValue('height'));
-    }*/
+   document.getElementById('erase').onclick = function () {
+       canvas.width = canvas.width;
+    }
     document.getElementById('pen').onclick = function () { window.drawMode = "pen" };
 
 
