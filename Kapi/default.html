@@ -36,7 +36,7 @@
         <tr height="100%" width="100%">
             <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -219.03px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -196px; left: 24px;">Typesetting Preview</h2>
             	<div data-win-control="WinJS.UI.AppBar" data-win-design-hidden="true">
-                    <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'page', id:'', label:'New', onclick:null, section:'global', type:'button'}"></button>
+                    <button onclick="newbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'page', id:'', label:'New', onclick:null, section:'global', type:'button'}"></buttononclick=newbutton())>
                     <button onclick="openbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'folder', id:'openfile', label:'Open', onclick:null, section:'global', type:'button'}"></button>
                     <button onclick="saveButton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'save', id:'savefile', label:'Save', onclick:null, section:'global', type:'button'}"></button>
             	</div>
@@ -47,8 +47,8 @@
             	</div>
             	<div data-win-control="WinJS.UI.NavBar" data-win-design-hidden="true">
             		<div data-win-control="WinJS.UI.NavBarContainer">
-            			<div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{icon:WinJS.UI.AppBarIcon.home, location:'/pages/home/home.html', label:'Home'}"></div>
-            			<div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{icon:WinJS.UI.AppBarIcon.home, location:'/pages/home/home.html', label:'Home'}"></div>
+            			<div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{icon:WinJS.UI.AppBarIcon.page2, location:'/pages/home/home.html', label:'Note 1'}"></div>
+            			<div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{icon:WinJS.UI.AppBarIcon.page2, location:'/pages/home/home.html', label:'Note 2'}"></div>
             		</div>  
             	</div>
             	<div class="win-textarea" id="previewdiv" style="position:absolute; height:18.25%; width:25.7%; background-color:white; top: 142px; left: 17px;"></div>

@@ -37,3 +37,8 @@
         });
 
     }
+
+    function newbutton() {
+        //dosomeshit
+
+    }
