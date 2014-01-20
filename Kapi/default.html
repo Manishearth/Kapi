@@ -69,7 +69,7 @@
             <td class="lefttd"><h1 style="text-align:center;">Kapi</h1></td>
             <td class="righttd" ><h2 style="padding-left:2%;">Notebook</h2></td>
         </tr>
-        <tr style="height:5%">
+        <tr style="height:7%">
             <td class="lefttd"><h2 style="padding-left: 4%;">Math Preview</h2></td>
             <td class="righttd" rowspan="6">
                 <div class="win-textarea" id=editdiv spellcheck="false" style="font-size: 20px; width: 92.95%; height:90%; border-bottom: 1px solid black; border-top: 1px solid black; display:block; margin-left:auto; margin-right:auto;" contenteditable="true">
@@ -82,7 +82,7 @@
                 <div class="win-textarea" style="display:block; margin-left:auto; margin-right:auto; height: 100%; width: 90%; background-color: white;" id="previewdiv"></div>
             </td>
         </tr>
-        <tr style="height:10%;">
+        <tr style="height:15%;">
             <td class="lefttd">
                 <center>
                     <button type="button" style="width: 70px; height: 70px;" onclick="addMathRegion()" accesskey=m><center><i class="fa fa-superscript fa-3x" id=mathicon></i><br><span id="mathtext">Add math</span></center></button>
@@ -90,60 +90,54 @@
                 </center>
             </td>
         </tr>
-        <tr id="mathtab" style="visibility:hidden; height:5%">
-                <td width="30%">
+        <tr style="height:40%">
+            <td class="lefttd">
+                <div id="mathtab" style="visibility:hidden;">
+
                     <center>
                         <button type="button" id="paren" onclick="mathParen()" accesskey="p">Paren</button>
                         <button type="button" id="sqrt" onclick="mathSqrt()" accesskey="q">Sqrt</button>
                         <button type="button" id="pow" onclick="mathPow()" accesskey="r">Power</button>
                         <button type="button" id="int" onclick="mathInt()" accesskey="i">Integral</button>
                     </center>
-                </td>
-        </tr>
-        <tr style="height:43%">
-            <td class="lefttd">
+
+                </div>
                 <div id="canvtab" style="visibility:hidden;">
-                    <table align="center">
-                        <tr>
-                            <td>
-                                <button type="button" id="pen" style="position:relative; left: 14px; top: 44px;">Pen</button>
-                            </td>
-                            <td>
-                                <button type="button" id="line" style="position:relative; left: 14px; top: 44px;">Line</button>
-                            </td>
-                            <td>
-                                <button type="button" id="rectangle" style="position:relative; left: 14px; top: 44px;">Square</button>
-                            </td>
-                            <td>
-                                <button type="button" id="circle" style="position:relative; left: 14px; top: 44px;">Circle</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button type="button" id="erase" style="position:relative; left: 14px; top: 44px;">Clear</button>
-                            </td>
-                        </tr>
-                    </table>
-                    <select id="thickness" style="position:relative; left: 216px; top: 70px; width: 91.05px;">
-                        <option value=2>2</option>
-                        <option value=4>4</option>
-                        <option value=6>6</option>
-                        <option value=8>8</option>
-                    </select>
-                    <select id="coloor" style="position:relative; left: 120.64px; top: 125px;">
-                        <option value="#002200" selected> Black</option>
-                        <option value="#00CCFF">Blue</option>
-                        <option value="#CCFF00">Yellow</option>
-                        <option value="#33CC33">Green</option>
-                        <option value="#CC3366">Red</option>
-                    </select>
-                    <h3 style="position:relative; width: 91px; left: 99px; top: 36px; height: 20px;">Thickness</h3>
-                    <h3 style="position: relative; width: 91px; left: 99px; top: 71px;">Color</h3>
+                    <center>
+                        <button type="button" id="pen">Pen</button>
+
+                        <button type="button" id="line">Line</button>
+
+                        <button type="button" id="rectangle">Square</button>
+
+                        <button type="button" id="circle">Circle</button>
+
+                        <button type="button" id="erase" style="margin-top:10px;">Clear</button>
+                    </center>
+                    <br />
+                    <center>
+                        <h3>Thickness</h3>
+                        <select id="thickness">
+                            <option value=2>2</option>
+                            <option value=4>4</option>
+                            <option value=6>6</option>
+                            <option value=8>8</option>
+                        </select>
+                        <h3>Color</h3>
+                        <select id="coloor">
+                            <option value="#002200" selected> Black</option>
+                            <option value="#00CCFF">Blue</option>
+                            <option value="#CCFF00">Yellow</option>
+                            <option value="#33CC33">Green</option>
+                            <option value="#CC3366">Red</option>
+                        </select>
+
+                    </center>
                 </div>
             </td>
         </tr>
         <tr>
-            <td class="lefttd"><p style="padding-left:5%">Team RAM</p></td>
+            <td class="lefttd"><p style="padding-left:10%">Team RAM</p></td>
         </tr>
     </table>
         <div id="point" style="z-index:2;position:absolute;color:black;font-size:16;display:none">+</div>
