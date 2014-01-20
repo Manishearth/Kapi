@@ -29,66 +29,80 @@
     <!--Font Awesome!-->
     <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
 
+    <style>
+        .lefttd {
+            background-color: #151515;
+            width ="30%";
+        }
+        .righttd {
+            background-color: white;
+            width: 70%;
+            color:black;
+        }
+    </style>
+
  <!-- <script src="sampleData.js" type="text/javascript"></script>	-->  
 </head>
-<body style="background-color:#353535;">
+<body style="background-color: #151515;">
+    <div data-win-control="WinJS.UI.AppBar">
+        <button onclick="newbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'page', id:'', label:'New', onclick:null, section:'global', type:'button'}">
+            </buttononclick=newbutton())>
+            <button onclick="openbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'folder', id:'openfile', label:'Open', onclick:null, section:'global', type:'button'}"></button>
+            <button onclick="saveButton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'save', id:'savefile', label:'Save', onclick:null, section:'global', type:'button'}"></button>
+            <button onclick="exportbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'download', id:'export', label:'Export', onclick:null, section:'global', type:'button'}"></button>
 
-    <table border="0" height="100%" width="100%">
-        <tr height="100%" width="100%">
-            <td width="30%" style="background-color:#151515;"><h1 style="position:relative; top: -186.03px; left: 24px; height: 64px;">Kapi</h1><h2 style="position:relative; top: -163px; left: 24px;">Math Preview</h2>
-            	<div data-win-control="WinJS.UI.AppBar">
-                    <button onclick="newbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'page', id:'', label:'New', onclick:null, section:'global', type:'button'}"></buttononclick=newbutton())>
-                    <button onclick="openbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'folder', id:'openfile', label:'Open', onclick:null, section:'global', type:'button'}"></button>
-                    <button onclick="saveButton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'save', id:'savefile', label:'Save', onclick:null, section:'global', type:'button'}"></button>
-					<button onclick="exportbutton()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'download', id:'export', label:'Export', onclick:null, section:'global', type:'button'}"></button>
-            		
-            	</div>
-            	<div class="sampleFlipViewItemTemplate" data-win-control="WinJS.Binding.Template">
-            		<div>
-            			<div data-win-bind="textContent:name"></div>
-            		</div>
-            	</div>
-            	<div data-win-control="WinJS.UI.NavBar" data-win-design-hidden="true">
-            		<div data-win-control="WinJS.UI.NavBarContainer">
-                        <!-- TODO tabbing-->
-            			<div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{icon:WinJS.UI.AppBarIcon.page2, location:'/pages/home/home.html', label:'Note 1'}"></div>
-            			<div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{icon:WinJS.UI.AppBarIcon.page2, location:'/pages/home/home.html', label:'Note 2'}"></div>
-            		</div>  
-            	</div>
-            <!--TODO align-->
-            	<div class="win-textarea" id="previewdiv" style="position:absolute; height:18.25%; width:25.7%; background-color:white; top: 142px; left: 17px;"></div>
-				<table>
-					<tr>
-						<td>
-							<button type="button" style="position:relative; top: 11px; bottom: 380px; left: 184px; right: 1211px; width: 70px; height: 73px;" onclick="addMathRegion()" accesskey=m><center><i class="fa fa-superscript fa-3x" id=mathicon></i><br><span id="mathtext">Add math</span></center></button>
-						</td>
-						<td>
-						<button type="button" onclick="initCanvas()" accesskey="c" style="position:relative; top: 11px; left: 202px; width: 70px; height: 75px;" onclick="initCanvas()">	
-							<center><i class="fa fa-pencil-square-o fa-3x"></i> Canvas</center>
-            	</button>
-						</td>
-					</tr>
-				</table>
-				<div id="mathtab" style="visibility:hidden;">
-                    <table>
-                        <tr>
-                            <td>
-                                <button type="button" id="paren"  onclick="mathParen()" accesskey="p" style="position:relative; left: 14px; top: 44px;">Paren</button>
-                            </td>
-                            <td>
-                                <button type="button" id="sqrt" onclick="mathSqrt()" accesskey="q" style="position:relative; left: 14px; top: 44px;">Sqrt</button>
-                            </td>
-                            <td>
-                                <button type="button" id="pow" onclick="mathPow()"  accesskey="r" style="position:relative; left: 14px; top: 44px;">Power</button>
-                            </td>
-                            <td>
-                                <button type="button" id="int" onclick="mathInt()" accesskey="i" style="position:relative; left: 14px; top: 44px;">Integral</button>
-                            </td>
+    </div>
+    <div class="sampleFlipViewItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div>
+            <div data-win-bind="textContent:name"></div>
+        </div>
+    </div>
+    <div data-win-control="WinJS.UI.NavBar" data-win-design-hidden="true">
+        <div data-win-control="WinJS.UI.NavBarContainer">
 
-                        </tr>
-						</table>
-						</div>
-                <div id="canvtab" style="visibility:hidden;">
+            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{icon:WinJS.UI.AppBarIcon.page2, location:'/pages/home/home.html', label:'Note 1'}"></div>
+            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{icon:WinJS.UI.AppBarIcon.page2, location:'/pages/home/home.html', label:'Note 2'}"></div>
+        </div>
+    </div>
+    <table height="100%" width="100%">
+        <tr style="height:10%">
+            <td class="lefttd"><h1 style="text-align:center;">Kapi</h1></td>
+            <td class="righttd"><h2 style="padding-left:2%;">Notebook</h2></td>
+        </tr>
+        <tr style="height:10%">
+            <td class="lefttd"><h2 style="padding-left: 4%;">Math Preview</h2></td>
+            <td class="righttd" rowspan="5">
+                <div class="win-textarea" id=editdiv spellcheck="false" style="font-size: 20px; width: 92.95%; height:90%; border-bottom: 1px solid black; border-top: 1px solid black; display:block; margin-left:auto; margin-right:auto;" contenteditable="true">
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="lefttd">
+                <div class="win-textarea" style="display:block; margin-left:auto; margin-right:auto; height: 90%; width: 90%; background-color: white;" id="previewdiv"></div>
+            </td>
+        </tr>
+        <tr>
+            <td width="15%" style="display:block; margin-left:auto; margin-right:auto;">
+                <button type="button" style="width: 70px; height: 70px;" onclick="addMathRegion()" accesskey=m><center><i class="fa fa-superscript fa-3x" id=mathicon></i><br><span id="mathtext">Add math</span></center></button>
+            </td>
+            <td width="15%" style="display:block; margin-left:auto; margin-right:auto;">
+                <button type="button" onclick="initCanvas()" accesskey="c" style="width: 70px; height: 70px;" onclick="initCanvas()">
+                    <center><i class="fa fa-pencil-square-o fa-3x"></i> Canvas</center>
+                </button>
+            </td>
+        </tr>
+        <tr id="mathtab" style="visibility:hidden;">
+                <td width="30%">
+                    <button type="button" id="paren" onclick="mathParen()" accesskey="p">Paren</button>
+                    <button type="button" id="sqrt" onclick="mathSqrt()" accesskey="q">Sqrt</button>
+                    <button type="button" id="pow" onclick="mathPow()" accesskey="r">Power</button>
+                    <button type="button" id="int" onclick="mathInt()" accesskey="i">Integral</button>
+                </td>
+        </tr>
+        <tr>
+            <td class="lefttd">
+                <div id="canvtab" style="visibility:visible;">
                     <table>
                         <tr>
                             <td>
@@ -103,11 +117,10 @@
                             <td>
                                 <button type="button" id="circle" style="position:relative; left: 14px; top: 44px;">Circle</button>
                             </td>
-
+                            <td>
+                                <button type="button" id="erase" style="position:relative; left: 14px; top: 44px;">Clear</button>
+                            </td>
                         </tr>
-                        <tr><td>
-    <button type="button" id="erase" style="position:relative; left: 14px; top: 44px;">Clear</button>
-</td></tr>
                     </table>
                     <select id="thickness" style="position:relative; left: 216px; top: 70px; width: 91.05px;">
                         <option value=2>2</option>
@@ -125,22 +138,9 @@
                     <h3 style="position:relative; width: 91px; left: 99px; top: 36px; height: 20px;">Thickness</h3>
                     <h3 style="position: relative; width: 91px; left: 99px; top: 71px;">Color</h3>
                 </div>
-
-</td>
-            <td width="70%" style="background-color:white;" ><h2 id="nh2"  style="color:black; position:relative; top: -2.76px; left: 32px;">Notebook</h2>
-            	<div class="win-textarea" id=editdiv spellcheck="false" style="position: relative;  font-size: 20px; padding-left: 10px; top: 4px;  left: 20px; width: 92.95%; border-bottom: 1px solid black; border-top: 1px solid black; height: 585px;" contenteditable="true">
-            		
-            	</div>
-
             </td>
         </tr>
-
     </table>
-
-    <script>
-        document.getElementById('editdiv').style.height = window.innerHeight - document.getElementById('nh2').offsetHeight -60 + 'px';
-
-    </script>
-    <div id="point" style="z-index:2;position:absolute;color:black;font-size:16;display:none">+</div>
+        <div id="point" style="z-index:2;position:absolute;color:black;font-size:16;display:none">+</div>
 </body>
 </html>
