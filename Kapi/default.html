@@ -69,7 +69,7 @@
             <td class="lefttd"><h1 style="text-align:center;">Kapi</h1></td>
             <td class="righttd" ><h2 style="padding-left:2%;">Notebook</h2></td>
         </tr>
-        <tr style="height:10%">
+        <tr style="height:5%">
             <td class="lefttd"><h2 style="padding-left: 4%;">Math Preview</h2></td>
             <td class="righttd" rowspan="6">
                 <div class="win-textarea" id=editdiv spellcheck="false" style="font-size: 20px; width: 92.95%; height:90%; border-bottom: 1px solid black; border-top: 1px solid black; display:block; margin-left:auto; margin-right:auto;" contenteditable="true">
@@ -82,7 +82,7 @@
                 <div class="win-textarea" style="display:block; margin-left:auto; margin-right:auto; height: 100%; width: 90%; background-color: white;" id="previewdiv"></div>
             </td>
         </tr>
-        <tr style="height:20%;">
+        <tr style="height:10%;">
             <td class="lefttd">
                 <center>
                     <button type="button" style="width: 70px; height: 70px;" onclick="addMathRegion()" accesskey=m><center><i class="fa fa-superscript fa-3x" id=mathicon></i><br><span id="mathtext">Add math</span></center></button>
@@ -90,7 +90,7 @@
                 </center>
             </td>
         </tr>
-        <tr id="mathtab" style="visibility:hidden; height:10%">
+        <tr id="mathtab" style="visibility:hidden; height:5%">
                 <td width="30%">
                     <center>
                         <button type="button" id="paren" onclick="mathParen()" accesskey="p">Paren</button>
@@ -100,13 +100,13 @@
                     </center>
                 </td>
         </tr>
-        <tr style="height:15%">
+        <tr style="height:43%">
             <td class="lefttd">
                 <div id="canvtab" style="visibility:hidden;">
                     <table align="center">
                         <tr>
                             <td>
-                                <button type="button" id="pen" style="position:relative; left: 14px; top: 44px;">Free Hand</button>
+                                <button type="button" id="pen" style="position:relative; left: 14px; top: 44px;">Pen</button>
                             </td>
                             <td>
                                 <button type="button" id="line" style="position:relative; left: 14px; top: 44px;">Line</button>
@@ -117,6 +117,8 @@
                             <td>
                                 <button type="button" id="circle" style="position:relative; left: 14px; top: 44px;">Circle</button>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <button type="button" id="erase" style="position:relative; left: 14px; top: 44px;">Clear</button>
                             </td>
@@ -141,7 +143,7 @@
             </td>
         </tr>
         <tr>
-            <td class="lefttd"></td>
+            <td class="lefttd"><p style="padding-left:5%">Team RAM</p></td>
         </tr>
     </table>
         <div id="point" style="z-index:2;position:absolute;color:black;font-size:16;display:none">+</div>
