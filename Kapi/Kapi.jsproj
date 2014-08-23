@@ -50,9 +50,11 @@
     <RequiredPlatformVersion>8.1</RequiredPlatformVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>Kapi_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Kapi_StoreKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>D6CE0A9C8B4617B3F5B9E5B2215F916983DE65E7</PackageCertificateThumbprint>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -129,6 +131,7 @@
     <Content Include="js\html2canvas.js" />
     <Content Include="js\MathToTeX.js" />
     <Content Include="js\script.js" />
+    <None Include="Kapi_StoreKey.pfx" />
     <Content Include="mathjax\.gitignore" />
     <Content Include="mathjax\fonts\HTML-CSS\TeX\woff\MathJax_AMS-Regular.woff" />
     <Content Include="mathjax\fonts\HTML-CSS\TeX\woff\MathJax_Caligraphic-Bold.woff" />
@@ -562,6 +565,7 @@
     <Content Include="mathjax\unpacked\localization\fr\MathML.js" />
     <Content Include="mathjax\unpacked\localization\fr\TeX.js" />
     <Content Include="mathjax\unpacked\MathJax.js" />
+    <None Include="Package.StoreAssociation.xml" />
     <None Include="Kapi_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
